@@ -1,0 +1,29 @@
+.contact-header {
+    background-color: $background-color;
+    @include spacing(xlarge);
+    text-align: center;
+}
+
+.contact-header h1 {
+    color: $primary-color;
+    @include font-size(xl);
+}
+
+.contact-section {
+    @include spacing(xlarge);
+}
+
+.form-control,
+.btn {
+    @include border-radius(large);
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-primary:hover {
+    background-color: $primary-color-hover;
+    border-color: $primary-color-hover;
+}

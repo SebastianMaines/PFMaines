@@ -1,0 +1,52 @@
+.productos-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-medium;
+    padding: $spacing-medium;
+}
+
+.productos-grid-item {
+    @extend %card-style;
+}
+
+.productos-grid-item:hover {
+    transform: translateY(-5px);
+    @extend %box-shadow-large;
+}
+
+.productos-card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    @include transition;
+}
+
+.productos-grid-item:hover .productos-card-img-top {
+    transform: scale(1.05);
+}
+
+.productos-card-body {
+    padding: $spacing-medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.productos-card-title {
+    @extend %card-title;
+}
+
+.productos-card-text {
+    @extend %card-text;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border: none;
+    align-self: center;
+}
+
+.btn-primary:hover {
+    background-color: $primary-color-hover;
+}

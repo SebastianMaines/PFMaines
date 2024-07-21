@@ -1,0 +1,50 @@
+.novedad {
+    background-color: $input-bg-color;
+    @include spacing(large);
+    margin-bottom: $spacing-large;
+    @include border-radius(medium);
+    @extend %box-shadow-small;
+    text-align: center;
+}
+
+.novedad h3 {
+    @include font-size(medium);
+    margin-bottom: $spacing-small;
+}
+
+.novedad p {
+    @include font-size(small);
+    margin-bottom: $spacing-medium;
+}
+
+.carousel-inner img {
+    height: 300px;
+    object-fit: cover;
+    @include transition;
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.05);
+}
+
+.carousel-caption {
+    background-color: $carousel-bg-color;
+    @include border-radius(medium);
+    @include spacing(small);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: $carousel-control-color;
+    border-radius: 20%;
+    width: 25px;
+    height: 25px;
+}
+
+.carousel-control-prev-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" fill%3D"%23FFFFFF" viewBox%3D"0 0 8 8"%3E%3Cpath d%3D"M4.5 0L0 4l4.5 4V5h3V3h-3V0z"/%3E%3C/svg%3E');
+}
+
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" fill%3D"%23FFFFFF" viewBox%3D"0 0 8 8"%3E%3Cpath d%3D"M3.5 0v3H0v2h3.5v3L8 4 3.5 0z"/%3E%3C/svg%3E');
+}

@@ -1,0 +1,31 @@
+.footer {
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+    padding: $spacing-medium;
+}
+
+.footer-logo img {
+    width: 140px;
+    height: auto;
+}
+
+.footer-social img {
+    width: 40px;
+    height: auto;
+}
+
+.footer h5 {
+    @include font-size(small);
+    margin-bottom: $spacing-small;
+}
+
+.footer-links a,
+.footer-social a {
+    color: $footer-text-color;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: $primary-color;
+}

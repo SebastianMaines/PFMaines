@@ -1,0 +1,74 @@
+.trabajos-realizados-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: $spacing-medium;
+    grid-template-areas:
+        "trabajo1 trabajo1 trabajo2 trabajo2"
+        "trabajo3 trabajo4 trabajo5 trabajo5"
+        "trabajo6 trabajo7 trabajo7 trabajo7";
+}
+
+.trabajos-realizados-grid-item {
+    @extend %card-style;
+}
+
+.trabajos-realizados-grid-item:hover {
+    transform: translateY(-5px);
+    @extend %box-shadow-large;
+}
+
+.trabajos-realizados-grid-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    @include transition;
+}
+
+.trabajos-realizados-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: $spacing-medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-title {
+    @extend %card-title;
+}
+
+.card-text {
+    @extend %card-text;
+}
+
+.trabajo1 {
+    grid-area: trabajo1;
+}
+
+.trabajo2 {
+    grid-area: trabajo2;
+}
+
+.trabajo3 {
+    grid-area: trabajo3;
+}
+
+.trabajo4 {
+    grid-area: trabajo4;
+}
+
+.trabajo5 {
+    grid-area: trabajo5;
+}
+
+.trabajo6 {
+    grid-area: trabajo6;
+}
+
+.trabajo7 {
+    grid-area: trabajo7;
+}

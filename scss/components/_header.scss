@@ -1,0 +1,23 @@
+.cabecera {
+    background-color: $header-bg-color;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.nav-link {
+    color: $primary-color !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    padding: $spacing-small $spacing-medium;
+    @include border-radius(medium);
+    background-color: $input-bg-color;
+    margin: 0 $spacing-small;
+    @include transition;
+}
+
+.nav-link:hover {
+    background-color: $primary-color !important;
+    color: $footer-text-color !important;
+}

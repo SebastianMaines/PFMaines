@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&family=Childhood&display=swap');
+
+// Variables de colores
+$primary-color: #FF98A5;
+$primary-color-hover: #c0446b;
+$secondary-color: #7fc6b8b9;
+$background-color: #f0f4f8;
+$header-bg-color: #7fc6b8b9;
+$text-color: #333;
+$footer-bg-color: #333;
+$footer-text-color: #fff;
+$card-bg-color: #ffffff;
+$card-shadow-color: rgba(0, 0, 0, 0.1);
+$card-hover-shadow-color: rgba(0, 0, 0, 0.2);
+$input-bg-color: #ffffff;
+$input-border-color: #ced4da;
+$carousel-bg-color: rgba(0, 0, 0, 0.5);
+$carousel-control-color: rgb(124, 122, 122);
+
+// Variables de tamaño de fuentes
+$font-size-small: 14px;
+$font-size-medium: 18px;
+$font-size-large: 30px;
+$font-size-xl: 2.5em;
+
+// Variables de espaciado
+$spacing-small: 10px;
+$spacing-medium: 20px;
+$spacing-large: 30px;
+$spacing-xlarge: 50px;
+
+// Variables de border radius
+$border-radius-small: 5px;
+$border-radius-medium: 10px;
+$border-radius-large: 50px;
+
+// Variables de box shadow
+$box-shadow-small: 0 4px 8px $card-shadow-color;
+$box-shadow-large: 0 8px 16px $card-hover-shadow-color;
+
+// Mixin para aplicar sombra depende el tamaño de la caja (lo aplico en _novedades.scss / _productos.scss / _productos-personalizados.scss y trabajos.scss
+@mixin box-shadow($size) {
+    @if $size ==small {
+        box-shadow: $box-shadow-small;
+    }
+
+    @else if $size ==large {
+        box-shadow: $box-shadow-large;
+    }
+}
+
+//Mixin para aplicar un radio de borde depende el tamaño de la caja se aplica en todas las paginas menos footer
+@mixin border-radius($size) {
+    @if $size ==small {
+        border-radius: $border-radius-small;
+    }
+
+    @else if $size ==medium {
+        border-radius: $border-radius-medium;
+    }
+
+    @else if $size ==large {
+        border-radius: $border-radius-large;
+    }
+}
+
+//mixin para aplicar diferentes tamaños de fuente ,lo aplico en todas menos en header
+@mixin font-size($size) {
+    @if $size ==small {
+        font-size: $font-size-small;
+    }
+
+    @else if $size ==medium {
+        font-size: $font-size-medium;
+    }
+
+    @else if $size ==large {
+        font-size: $font-size-large;
+    }
+
+    @else if $size ==xl {
+        font-size: $font-size-xl;
+    }
+}
+
+@mixin spacing($size) {
+    @if $size ==small {
+        padding: $spacing-small;
+    }
+
+    @else if $size ==medium {
+        padding: $spacing-medium;
+    }
+
+    @else if $size ==large {
+        padding: $spacing-large;
+    }
+
+    @else if $size ==xlarge {
+        padding: $spacing-xlarge;
+    }
+}
+
+@mixin transition {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+// extends
+%box-shadow-small {
+    @include box-shadow(small);
+}
+
+%box-shadow-large {
+    @include box-shadow(large);
+}
+
+%card-style {
+    background-color: $card-bg-color;
+    @include border-radius(medium);
+    @extend %box-shadow-small;
+    @include transition;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+%card-title {
+    @include font-size(medium);
+    color: $text-color;
+    margin-bottom: $spacing-small;
+    text-align: center;
+}
+
+%card-text {
+    @include font-size(small);
+    color: $input-border-color;
+    margin-bottom: $spacing-medium;
+    text-align: center;
+}
+
+/*---------------------------------------RESET--------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*---------------------------------------BODY --------------------------------------- */
+.cuerpo {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: 'Outfit', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/*---------------------------------------BOTONES FLOTANTES--------------------------------------- */
+.botonfijo img {
+    width: 40px;
+    height: 40px;
+}

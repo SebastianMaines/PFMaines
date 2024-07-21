@@ -1,0 +1,93 @@
+/*---------------------------------------PRESENTACION--------------------------------------- */
+.presentacion {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #bdb6b67e;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.presentacion img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.presentacion h4 {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/*---------------------------------------CARRUSEL--------------------------------------- */
+.carrusel {
+    background-color: #f9ba54c0;
+    padding: 20px;
+}
+
+.carrusel h4 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.carrusel .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.carrusel .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carrusel .card img {
+    border-bottom: 5px solid #e0e0e0;
+}
+
+.carrusel .card-title {
+    font-size: 18px;
+    color: #333;
+}
+
+.carrusel .btn-primary {
+    background-color: #FF98A5;
+    border: none;
+}
+
+.carrusel .btn-primary:hover {
+    background-color: #c0446b;
+}
+
+.carousel-inner img.carrusel-img {
+    object-fit: cover;
+    height: 450px;
+}
+
+/*---------------------------------------PRODUCTOS DE INTERES--------------------------------------- */
+.productos {
+    background-color: #DD9AD1;
+    padding: 20px;
+    text-align: center;
+}
+
+.productos .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.productos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.productos .card img {
+    border-radius: 10px;
+}
+
+.productos .card-title {
+    font-size: 18px;
+    color: #333;
+}
