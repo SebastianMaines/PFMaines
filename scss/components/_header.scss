@@ -8,16 +8,16 @@
 
 .nav-link {
     color: $primary-color !important;
-    font-family: 'Outfit', sans-serif;
+    font-family: $font-family;
     font-weight: 500;
-    padding: $spacing-small $spacing-medium;
-    @include border-radius(medium);
-    background-color: $input-bg-color;
-    margin: 0 $spacing-small;
-    @include transition;
+    padding: 10px 20px;
+    border-radius: $border-radius-medium;
+    background-color: #ffffff;
+    margin: 0 10px;
+    transition: background-color $transition, color $transition;
 }
 
 .nav-link:hover {
     background-color: $primary-color !important;
-    color: $footer-text-color !important;
+    color: #ffffff !important;
 }

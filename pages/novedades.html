@@ -3,12 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Papelarte: agendas, cuadernos, y decoraciones de papel personalizadas. Diseños únicos para cumpleaños y ocasiones especiales. ¡Descubre nuestro arte en papel!">
+    <meta name="keywords"
+        content="Papelarte, Papelarte.rocio, scrap, scrapbooking, agendas, agenda 2024, agedas maternales">
     <title>Novedades - Papelarte Rocio</title>
     <!-- Linkear CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Linkear CSS personalizado -->
     <link rel="stylesheet" href="../css/estilos.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 
 <body class="cuerpo">
@@ -43,17 +50,15 @@
 
     <!-----------------------INICIO MAIN------------------------->
     <main class="container my-5">
-        <h2 class="text-center mb-4">Novedades</h2>
-
-
+        <h1 class="text-center mb-4">Novedades</h1>
 
         <!----------- Novedad 1 --------------------->
-        <div class="novedad">
+        <div class="novedad" data-aos="fade-up">
             <h3 class="text-center">Album dia del padre</h3>
             <p class="text-center">Álbum del figuritas
                 Medida 14x20cm + sobre con 28 fotos de diversos tamaños.
                 No te cuelgues, regala fotos de una manera original.</p>
-            <div id="carouselNovedad1" class="carousel slide" data-ride="carousel">
+            <div id="carouselNovedad1" class="carousel slide" data-ride="carousel" data-aos="fade-up">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../img/lanzamiento_2.jpg" class="d-block w-50 mx-auto" alt="">
@@ -74,12 +79,12 @@
         </div>
 
         <!----------- Novedad 2 --------------------->
-        <div class="novedad">
+        <div class="novedad" data-aos="fade-up">
             <h3 class="text-center">Album dia del padre</h3>
             <p class="text-center">Álbum del figuritas
                 Medida 14x20cm + sobre con 28 fotos de diversos tamaños.
                 No te cuelgues, regala fotos de una manera original.</p>
-            <div id="carouselNovedad2" class="carousel slide" data-ride="carousel">
+            <div id="carouselNovedad2" class="carousel slide" data-ride="carousel" data-aos="fade-up">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../img/Lanzamiento_1.jpg" class="d-block w-50 mx-auto" alt="Novedad 2 Imagen 1">
@@ -135,11 +140,8 @@
                 </a>
             </div>
         </div>
-
-
     </main>
     <!-----------------------FIN MAIN------------------------->
-
 
     <!-----------------------INICIO FOOTER------------------------->
     <footer class="footer bg-dark text-white py-4">
@@ -188,6 +190,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

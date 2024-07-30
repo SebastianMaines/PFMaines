@@ -4,7 +4,7 @@
 $primary-color: #FF98A5;
 $primary-color-hover: #c0446b;
 $secondary-color: #7fc6b8b9;
-$background-color: #f0f4f8;
+$background-color: #b7bbc4d0;
 $header-bg-color: #7fc6b8b9;
 $text-color: #333;
 $footer-bg-color: #333;
@@ -22,6 +22,7 @@ $font-size-small: 14px;
 $font-size-medium: 18px;
 $font-size-large: 30px;
 $font-size-xl: 2.5em;
+$font-family: 'Outfit', sans-serif;
 
 // Variables de espaciado
 $spacing-small: 10px;
@@ -38,7 +39,10 @@ $border-radius-large: 50px;
 $box-shadow-small: 0 4px 8px $card-shadow-color;
 $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
 
-// Mixin para aplicar sombra depende el tamaño de la caja (lo aplico en _novedades.scss / _productos.scss / _productos-personalizados.scss y trabajos.scss
+// Variable de transición
+$transition: 0.3s ease;
+
+// Mixin para aplicar sombra depende el tamaño de la caja (lo aplico en _novedades.scss / _productos.scss / _productos-personalizados.scss y trabajos.scss)
 @mixin box-shadow($size) {
     @if $size ==small {
         box-shadow: $box-shadow-small;
@@ -49,7 +53,7 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
     }
 }
 
-//Mixin para aplicar un radio de borde depende el tamaño de la caja se aplica en todas las paginas menos footer
+// Mixin para aplicar un radio de borde depende el tamaño de la caja (se aplica en todas las páginas menos footer)
 @mixin border-radius($size) {
     @if $size ==small {
         border-radius: $border-radius-small;
@@ -64,7 +68,7 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
     }
 }
 
-//mixin para aplicar diferentes tamaños de fuente ,lo aplico en todas menos en header
+// Mixin para aplicar diferentes tamaños de fuente (lo aplico en todas menos en header)
 @mixin font-size($size) {
     @if $size ==small {
         font-size: $font-size-small;
@@ -83,6 +87,7 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
     }
 }
 
+// Mixin para espaciado
 @mixin spacing($size) {
     @if $size ==small {
         padding: $spacing-small;
@@ -101,11 +106,28 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
     }
 }
 
+// Mixin para transiciones
 @mixin transition {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-// extends
+// Mixin para estilos de botones
+@mixin button-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px 20px;
+    border-radius: $border-radius-medium;
+    border: none;
+    cursor: pointer;
+    transition: background-color $transition, color $transition;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        color: lighten($text-color, 10%);
+    }
+}
+
+// Extends
 %box-shadow-small {
     @include box-shadow(small);
 }
@@ -138,6 +160,16 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
     text-align: center;
 }
 
+// Botones
+.btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3; // Cambia este color según tu paleta
+    transform: scale(1.05);
+}
+
 /*---------------------------------------RESET--------------------------------------- */
 * {
     margin: 0;
@@ -149,7 +181,7 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
 .cuerpo {
     background-color: $background-color;
     color: $text-color;
-    font-family: 'Outfit', sans-serif;
+    font-family: $font-family;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
@@ -159,4 +191,54 @@ $box-shadow-large: 0 8px 16px $card-hover-shadow-color;
 .botonfijo img {
     width: 40px;
     height: 40px;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.logo {
+    animation: pulsate 3s ease-in-out infinite;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-prev-icon i,
+.carousel-control-next-icon i {
+    margin: 0;
 }

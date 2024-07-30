@@ -1,12 +1,9 @@
 .productos-personalizados-grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: $spacing-medium;
-    grid-template-areas:
-        "item1 item1 item2 item2"
-        "item3 item3 item4 item4"
-        "item5 item5 item6 item6";
     padding: $spacing-medium;
+
 }
 
 .productos-personalizados-grid-item {

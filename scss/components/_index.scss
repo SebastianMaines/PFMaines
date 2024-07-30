@@ -2,92 +2,227 @@
 .presentacion {
     text-align: center;
     padding: 40px 20px;
-    background-color: #bdb6b67e;
-    border-radius: 10px;
+    background-color: lighten($background-color, 20%);
+    border-radius: $border-radius-medium;
     margin-bottom: 40px;
 }
 
 .presentacion img {
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: $border-radius-medium;
     margin-bottom: 20px;
 }
 
 .presentacion h4 {
     font-size: 18px;
-    color: #333;
+    color: $text-color;
     line-height: 1.6;
 }
+
+.icon-container {
+    position: relative;
+}
+
+.falling-icons {
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 120%;
+    overflow: hidden;
+    z-index: 1;
+
+    &.left {
+        left: -260px;
+
+    }
+
+    &.right {
+        right: -260px;
+
+    }
+}
+
+.falling-icon {
+
+    position: absolute;
+    top: -100px;
+    width: 25px;
+    /* Cambia el tamaño de los íconos aquí */
+    height: 30px;
+    /* Asegúrate de que mantenga proporción */
+    animation: fall linear infinite;
+
+}
+
+.falling-icon:nth-child(1) {
+    animation-duration: 10s;
+    animation-delay: 0s;
+    left: 10px;
+
+}
+
+.falling-icon:nth-child(2) {
+    animation-duration: 12s;
+    animation-delay: 1s;
+    left: 15px;
+}
+
+.falling-icon:nth-child(3) {
+    animation-duration: 14s;
+    animation-delay: 2s;
+    left: 20px;
+}
+
+.falling-icon:nth-child(4) {
+    animation-duration: 16s;
+    animation-delay: 3s;
+    left: 25px;
+}
+
+.falling-icon:nth-child(5) {
+    animation-duration: 18s;
+    animation-delay: 4s;
+    left: 30px;
+}
+
+.falling-icon:nth-child(6) {
+    animation-duration: 20s;
+    animation-delay: 5s;
+    left: 35px;
+}
+
+.falling-icon:nth-child(7) {
+    animation-duration: 22s;
+    animation-delay: 6s;
+    left: 40px;
+}
+
+.falling-icon:nth-child(8) {
+    animation-duration: 24s;
+    animation-delay: 7s;
+    left: 45px;
+}
+
+.falling-icon:nth-child(9) {
+    animation-duration: 26s;
+    animation-delay: 8s;
+    left: 50px;
+}
+
+.falling-icon:nth-child(10) {
+    animation-duration: 28s;
+    animation-delay: 9s;
+    left: 55px;
+}
+
+.falling-icon:nth-child(11) {
+    animation-duration: 30s;
+    animation-delay: 10s;
+    left: 60px;
+}
+
+.falling-icon:nth-child(12) {
+    animation-duration: 32s;
+    animation-delay: 11s;
+    left: 65px;
+}
+
+@keyframes fall {
+    0% {
+        top: -100px;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
 
 /*---------------------------------------CARRUSEL--------------------------------------- */
 .carrusel {
     background-color: #f9ba54c0;
     padding: 20px;
+    flex: 1;
 }
 
 .carrusel h4 {
     font-size: 30px;
-    color: #333;
+    color: $text-color;
     margin-bottom: 10px;
 }
 
+.carousel-item {
+    height: 100%;
+
+}
+
 .carrusel .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: $border-radius-medium;
+    box-shadow: 0 4px 8px $card-shadow-color;
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 740px;
+    width: 100%;
 }
 
 .carrusel .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-15px);
+    box-shadow: 0 16px 32px $card-hover-shadow-color;
 }
 
 .carrusel .card img {
     border-bottom: 5px solid #e0e0e0;
+
+}
+
+.carousel-item img {
+    max-height: 100%;
+    object-fit: cover;
+
 }
 
 .carrusel .card-title {
     font-size: 18px;
-    color: #333;
+    color: $text-color;
 }
 
 .carrusel .btn-primary {
-    background-color: #FF98A5;
-    border: none;
-}
-
-.carrusel .btn-primary:hover {
-    background-color: #c0446b;
+    @include button-styles($primary-color, #ffffff);
 }
 
 .carousel-inner img.carrusel-img {
     object-fit: cover;
-    height: 450px;
+    height: 550px;
 }
+
+
 
 /*---------------------------------------PRODUCTOS DE INTERES--------------------------------------- */
 .productos {
-    background-color: #DD9AD1;
+    background-color: lighten($background-color, 10%);
     padding: 20px;
     text-align: center;
 }
 
 .productos .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: $border-radius-medium;
+    box-shadow: 0 4px 8px $card-shadow-color;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .productos .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px $card-hover-shadow-color;
 }
 
 .productos .card img {
-    border-radius: 10px;
+    border-bottom: 5px solid #e0e0e0;
 }
 
 .productos .card-title {
     font-size: 18px;
-    color: #333;
+    color: $text-color;
+}
+
+.productos .btn-primary {
+    @include button-styles($primary-color, #ffffff);
 }

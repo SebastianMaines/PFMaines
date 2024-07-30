@@ -1,7 +1,38 @@
+//aca saco una prueba que hice para que caigan iconos en la parte izquierda y derecha
+@media (max-width: 1550px) {
+    .falling-icons {
+        display: none;
+    }
+}
+
+
 @media (max-width: 1200px) {
     .col-lg-6 {
         flex: 0 0 50%;
         max-width: 50%;
+    }
+
+
+}
+
+@media (max-width: 992px) {
+
+    .productos-personalizados-grid-container,
+    .trabajos-realizados-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .trabajos-realizados-grid-container {
+        grid-template-areas:
+            "trabajo1 trabajo1"
+            "trabajo2 trabajo2"
+            "trabajo3 trabajo3"
+            "trabajo4 trabajo4"
+            "trabajo5 trabajo5"
+            "trabajo6 trabajo6"
+            "trabajo7 trabajo7";
     }
 }
 
@@ -11,36 +42,21 @@
     }
 
     .navbar-nav .nav-item {
-        margin: $spacing-small 0;
-    }
-}
-
-@media (max-width: 992px) {
-    .productos-personalizados-grid-container {
-        grid-template-areas:
-            "item1 item1 item2 item2"
-            "item3 item3 item3 item3"
-            "item4 item4 item4 item4";
+        margin: 10px 0;
     }
 
+    .productos-personalizados-grid-container,
     .trabajos-realizados-grid-container {
-        grid-template-areas:
-            "trabajo1 trabajo1 trabajo2 trabajo2"
-            "trabajo3 trabajo3 trabajo4 trabajo4"
-            "trabajo5 trabajo5 trabajo6 trabajo6"
-            "trabajo7 trabajo7 trabajo7 trabajo7";
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
     }
-}
 
-@media (max-width: 788px) {
     .productos-personalizados-grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
         grid-template-areas:
-            "item1 item1"
-            "item2 item2"
-            "item3 item3"
-            "item4 item4";
+            "item1"
+            "item2"
+            "item3"
+            "item4";
     }
 }
 
@@ -70,6 +86,6 @@
     }
 
     .navbar-nav .nav-item {
-        margin: $spacing-small 0;
+        margin: 10px 0;
     }
 }
