@@ -377,7 +377,7 @@
 
 .productos-personalizados-card-img-top {
   width: 100%;
-  height: 500px;
+  height: 400px;
   object-fit: cover;
   transition: transform 0.2s, box-shadow 0.2s; }
 
@@ -537,9 +537,17 @@
   .trabajos-realizados-grid-container {
     grid-template-areas: "trabajo1 trabajo1" "trabajo2 trabajo2" "trabajo3 trabajo3" "trabajo4 trabajo4" "trabajo5 trabajo5" "trabajo6 trabajo6" "trabajo7 trabajo7"; } }
 
+@media (max-width: 860px) {
+  .navbar-toggler {
+    display: block;
+    margin-left: auto; } }
+
 @media (max-width: 768px) {
   .cabecera img.logo {
     max-height: 60px; }
+  .navbar-toggler {
+    display: block;
+    margin-left: auto; }
   .navbar-nav .nav-item {
     margin: 10px 0; }
   .productos-personalizados-grid-container,
@@ -557,12 +565,12 @@
   .cabecera img.logo {
     max-height: 50px; }
   .navbar-toggler {
+    display: block;
     margin-left: auto; }
   .navbar-collapse {
     text-align: center; }
   .navbar-nav {
     display: flex;
-    flex-direction: column;
-    align-items: center; }
+    flex-direction: column; }
   .navbar-nav .nav-item {
     margin: 10px 0; } }

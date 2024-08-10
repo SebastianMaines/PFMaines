@@ -9,6 +9,7 @@
 .productos-personalizados-grid-item {
     @extend %card-style;
     text-align: center;
+
 }
 
 .productos-personalizados-grid-item:hover {
@@ -18,7 +19,7 @@
 
 .productos-personalizados-card-img-top {
     width: 100%;
-    height: 500px;
+    height: 400px;
     object-fit: cover;
     @include transition;
 }
