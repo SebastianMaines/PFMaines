@@ -55,6 +55,39 @@
 
     <!-------------------------INICIO MAIN------------------------->
     <main class="container">
+
+        <h1>Simulador!! --- No tuve tiempo para dedicar al css ni hacer una pagina del carrito. :( </h1>
+
+
+        <!-- Formulario de registro del usuario -->
+        <form id="registroForm">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Contraseña (entre 8 y 14 caracteres):</label>
+            <input type="password" id="password" minlength="8" maxlength="14" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <!-- Mensaje de bienvenida -->
+        <div id="mensajeBienvenida"></div>
+
+        <!-- Lista de productos para comprar -->
+        <div id="compra">
+            <h2>¿Qué deseas comprar?</h2>
+            <form id="formCompra">
+                <div id="listaProductos"></div>
+                <button type="button" id="finalizarCompra">Finalizar compra</button>
+            </form>
+        </div>
+
+        <!-- Detalle de la compra -->
+        <div id="detalleCompra"></div>
+
+        <script src="main.js"></script>
+
+
         <!-------------------------PRESENTACION NEGOCIO------------------------->
         <div class="icon-container">
             <div class="falling-icons left">

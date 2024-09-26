@@ -1,24 +1,4 @@
-
-alert("Te damos la bienvenida a Papelarte.\nDescubre nuestros productos personalizados de papelería.");
-
-let username = "";
-let password = "";
-
-// Solicitar registro 
-while (username === "") {
-    username = prompt("Ingresa un nombre de usuario para registrarte: ");
-}
-
-while (password === "" || password.length < 8 || password.length > 14) {
-    password = prompt("Ingresa una contraseña (debe tener entre 8 y 14 caracteres): ");
-}
-
-alert(`Registro exitoso.\nBienvenido a Papelarte, ${username}`);
-
-console.log(`Usuario registrado: ${username}`);
-console.log(`Contraseña registrada: ${password}`);
-
-// Lista de productos
+// Lista de productos en un array de objetos
 const productosPapelarte = [
     { name: "Agenda perpetua", price: 45 },
     { name: "Agenda emprendedora", price: 50 },
@@ -27,75 +7,77 @@ const productosPapelarte = [
     { name: "Bolsas para eventos", price: 20 },
 ];
 
-// Mostrar productos disponibles 
-const nombresProductos = productosPapelarte.map(producto => producto.name).join('\n');
-let productoSeleccionado = prompt(`Elige un producto de la lista para más detalles:\n${nombresProductos}`);
+// Al cargar la página, mostrar los productos con checkboxes
+function mostrarProductos() {
+    const listaProductos = document.getElementById('listaProductos');
+    productosPapelarte.forEach((producto, index) => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `producto-${index}`;
+        checkbox.value = producto.name;
+        checkbox.dataset.price = producto.price; // Guardamos el precio en un atributo
 
-// Filtrar  producto 
-let productoEncontrado = productosPapelarte.filter(producto => producto.name.toLowerCase() === productoSeleccionado.toLowerCase());
+        const label = document.createElement('label');
+        label.htmlFor = `producto-${index}`;
+        label.textContent = `${producto.name} - $${producto.price}`;
 
-if (productoEncontrado.length > 0) {
-    alert(`Has seleccionado: ${productoEncontrado[0].name} - Precio: $${productoEncontrado[0].price}`);
+        const div = document.createElement('div');
+        div.appendChild(checkbox);
+        div.appendChild(label);
 
-
-    let colorTapa = prompt("Selecciona el color de la tapa (negro, azul, rosa, amarillo o gris):").toLowerCase();
-
-
-    const coloresValidos = ["negro", "azul", "rosa", "amarillo", "gris"];
-    if (coloresValidos.includes(colorTapa)) {
-        alert(`Has elegido el producto ${productoEncontrado[0].name} con tapa color ${colorTapa}`);
-    } else {
-        alert("El color seleccionado no es válido.");
-    }
-} else {
-    alert("El producto seleccionado no está disponible.");
+        listaProductos.appendChild(div);
+    });
 }
 
-// compra
-function comprarProductos() {
-    let carrito = [];
-    let opcion;
+// Captura el evento del formulario de registro
+document.getElementById('registroForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe
 
-    while (opcion !== "0") {
-        console.log("--- Lista de Productos ---");
-        productosPapelarte.forEach((producto, index) => {
-            console.log(`${index + 1}. ${producto.name} - $${producto.price}`);
-        });
-        console.log("0. Terminar compra");
+    // Obtiene el nombre de usuario y la contraseña
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-        opcion = prompt("Selecciona un número para añadir al carrito (0 para terminar)\nMira la lista en la consola.");
+    // Validar la longitud de la contraseña
+    if (password.length >= 8 && password.length <= 14) {
+        // Guarda el usuario en localStorage
+        localStorage.setItem('usuario', JSON.stringify({ username, password }));
 
-        if (opcion !== "0") {
-            let indiceProducto = Number(opcion) - 1;
+        // Muestra un mensaje de bienvenida en el DOM
+        document.getElementById('mensajeBienvenida').innerHTML = `Registro exitoso. Bienvenido, ${username}`;
 
-            if (indiceProducto >= 0 && indiceProducto < productosPapelarte.length) {
-                let cantidad = Number(prompt(`¿Cuántas unidades de ${productosPapelarte[indiceProducto].name} deseas comprar?`));
-                let producto = {
-                    ...productosPapelarte[indiceProducto],
-                    cantidad: cantidad
-                };
-                carrito.push(producto);
-                alert(`Producto añadido al carrito: ${producto.name}`);
-            } else {
-                alert("Opción inválida. Inténtalo nuevamente.");
-            }
-        }
-    }
-
-    if (carrito.length > 0) {
-        console.log("Resumen de tu compra:");
-        console.table(carrito.map(producto => ({
-            Nombre: producto.name,
-            Cantidad: producto.cantidad,
-            "Precio Unitario": producto.price,
-            "Precio Total": producto.price * producto.cantidad
-        })));
-
-        let total = carrito.reduce((sum, producto) => sum + producto.price * producto.cantidad, 0);
-        console.log(`Total de tu compra: $${total}`);
-        alert(`Total de tu compra: $${total}`)
+        // Muestra la lista de productos para comprar
+        mostrarProductos();
     } else {
-        alert("No seleccionaste ningún producto.");
+        document.getElementById('mensajeBienvenida').innerHTML = "La contraseña debe tener entre 8 y 14 caracteres.";
     }
-}
-comprarProductos();
+});
+
+// Manejar el evento de finalizar compra
+document.getElementById('finalizarCompra').addEventListener('click', function () {
+    const productosSeleccionados = [];
+    const checkboxes = document.querySelectorAll('#listaProductos input[type="checkbox"]:checked');
+
+    let total = 0;
+    checkboxes.forEach(checkbox => {
+        const nombreProducto = checkbox.value;
+        const precioProducto = parseFloat(checkbox.dataset.price);
+
+        productosSeleccionados.push(`${nombreProducto} - $${precioProducto}`);
+        total += precioProducto;
+    });
+
+    // Mostrar el detalle de la compra
+    const detalleCompra = document.getElementById('detalleCompra');
+    if (productosSeleccionados.length > 0) {
+        detalleCompra.innerHTML = `
+            <h2>Detalle de la compra</h2>
+            <p>Has comprado:</p>
+            <ul>
+                ${productosSeleccionados.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+            <p>Total: $${total}</p>
+        `;
+    } else {
+        detalleCompra.innerHTML = `<p>No has seleccionado ningún producto.</p>`;
+    }
+});
