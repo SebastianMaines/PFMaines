@@ -7,77 +7,97 @@ const productosPapelarte = [
     { name: "Bolsas para eventos", price: 20 },
 ];
 
-// Al cargar la página, mostrar los productos con checkboxes
+// Mostrar productos y verificar si ya están en el carrito
 function mostrarProductos() {
     const listaProductos = document.getElementById('listaProductos');
+    listaProductos.innerHTML = ''; // Limpiar lista para evitar duplicados
     productosPapelarte.forEach((producto, index) => {
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `producto-${index}`;
-        checkbox.value = producto.name;
-        checkbox.dataset.price = producto.price; // Guardamos el precio en un atributo
-
-        const label = document.createElement('label');
-        label.htmlFor = `producto-${index}`;
-        label.textContent = `${producto.name} - $${producto.price}`;
-
         const div = document.createElement('div');
-        div.appendChild(checkbox);
-        div.appendChild(label);
+        div.className = 'producto';
 
+        const nombre = document.createElement('span');
+        nombre.textContent = `${producto.name} - $${producto.price}`;
+
+        const botonAgregar = document.createElement('button');
+        botonAgregar.textContent = 'Agregar al carrito';
+        botonAgregar.onclick = () => agregarAlCarrito(index);
+
+        div.appendChild(nombre);
+        div.appendChild(botonAgregar);
         listaProductos.appendChild(div);
     });
 }
 
-// Captura el evento del formulario de registro
-document.getElementById('registroForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe
+// Agregar producto al carrito
+function agregarAlCarrito(index) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const producto = productosPapelarte[index];
+    const itemExistente = carrito.find(item => item.name === producto.name);
 
-    // Obtiene el nombre de usuario y la contraseña
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Validar la longitud de la contraseña
-    if (password.length >= 8 && password.length <= 14) {
-        // Guarda el usuario en localStorage
-        localStorage.setItem('usuario', JSON.stringify({ username, password }));
-
-        // Muestra un mensaje de bienvenida en el DOM
-        document.getElementById('mensajeBienvenida').innerHTML = `Registro exitoso. Bienvenido, ${username}`;
-
-        // Muestra la lista de productos para comprar
-        mostrarProductos();
+    if (itemExistente) {
+        itemExistente.quantity += 1;
     } else {
-        document.getElementById('mensajeBienvenida').innerHTML = "La contraseña debe tener entre 8 y 14 caracteres.";
+        carrito.push({ ...producto, quantity: 1 });
     }
-});
 
-// Manejar el evento de finalizar compra
-document.getElementById('finalizarCompra').addEventListener('click', function () {
-    const productosSeleccionados = [];
-    const checkboxes = document.querySelectorAll('#listaProductos input[type="checkbox"]:checked');
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarrito();
+}
+
+// Eliminar producto del carrito
+function eliminarDelCarrito(index) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarrito();
+}
+
+// Actualizar el contenido del carrito
+function actualizarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const detalleCompra = document.getElementById('detalleCompra');
+    detalleCompra.innerHTML = '';
 
     let total = 0;
-    checkboxes.forEach(checkbox => {
-        const nombreProducto = checkbox.value;
-        const precioProducto = parseFloat(checkbox.dataset.price);
 
-        productosSeleccionados.push(`${nombreProducto} - $${precioProducto}`);
-        total += precioProducto;
+    carrito.forEach((producto, index) => {
+        const div = document.createElement('div');
+        div.className = 'item-carrito';
+
+        const nombre = document.createElement('span');
+        nombre.textContent = `${producto.name} - $${producto.price} x ${producto.quantity}`;
+
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = () => eliminarDelCarrito(index);
+
+        div.appendChild(nombre);
+        div.appendChild(botonEliminar);
+        detalleCompra.appendChild(div);
+
+        total += producto.price * producto.quantity;
     });
 
-    // Mostrar el detalle de la compra
-    const detalleCompra = document.getElementById('detalleCompra');
-    if (productosSeleccionados.length > 0) {
-        detalleCompra.innerHTML = `
-            <h2>Detalle de la compra</h2>
-            <p>Has comprado:</p>
-            <ul>
-                ${productosSeleccionados.map(item => `<li>${item}</li>`).join('')}
-            </ul>
-            <p>Total: $${total}</p>
-        `;
-    } else {
-        detalleCompra.innerHTML = `<p>No has seleccionado ningún producto.</p>`;
+    const totalCarrito = document.createElement('p');
+    totalCarrito.textContent = `Total: $${total}`;
+    detalleCompra.appendChild(totalCarrito);
+
+    if (carrito.length > 0) {
+        const botonVaciar = document.createElement('button');
+        botonVaciar.textContent = 'Vaciar carrito';
+        botonVaciar.onclick = vaciarCarrito;
+        detalleCompra.appendChild(botonVaciar);
     }
-});
+}
+
+// Vaciar el carrito
+function vaciarCarrito() {
+    localStorage.removeItem('carrito');
+    actualizarCarrito();
+}
+
+// Mostrar el carrito al cargar la página
+window.onload = function () {
+    mostrarProductos();
+    actualizarCarrito();
+};
