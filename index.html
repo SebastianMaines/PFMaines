@@ -17,6 +17,13 @@
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body class="cuerpo">
@@ -44,6 +51,7 @@
                             <li class="nav-item"><a class="nav-link" href="pages/trabajos.html">Trabajos Realizados</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="pages/contacto.html">Contacto</a></li>
+                            <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -55,37 +63,6 @@
 
     <!-------------------------INICIO MAIN------------------------->
     <main class="container">
-
-        <h1>Simulador!! --- No tuve tiempo para dedicar al css ni hacer una pagina del carrito. :( </h1>
-
-
-        <!-- Formulario de registro del usuario -->
-        <form id="registroForm">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" required>
-
-            <label for="password">Contraseña (entre 8 y 14 caracteres):</label>
-            <input type="password" id="password" minlength="8" maxlength="14" required>
-
-            <button type="submit">Registrarse</button>
-        </form>
-
-        <!-- Mensaje de bienvenida -->
-        <div id="mensajeBienvenida"></div>
-
-        <!-- Lista de productos para comprar -->
-        <div id="compra">
-            <h2>¿Qué deseas comprar?</h2>
-            <form id="formCompra">
-                <div id="listaProductos"></div>
-                <button type="button" id="finalizarCompra">Finalizar compra</button>
-            </form>
-        </div>
-
-        <!-- Detalle de la compra -->
-        <div id="detalleCompra"></div>
-
-        <script src="main.js"></script>
 
 
         <!-------------------------PRESENTACION NEGOCIO------------------------->
@@ -393,6 +370,8 @@
     </footer>
     <!-------------------------FIN FOOTER------------------------->
 
+
+
     <!-- Linkear JS de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -403,6 +382,10 @@
     <script>
         AOS.init();
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

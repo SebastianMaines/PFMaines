@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Agenda perpetua",
+        "price": 4500,
+        "img": "img/conteniedo_producto_personalizado1_1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Agenda emprendedora",
+        "price": 5000,
+        "img": "img/conteniedo_producto_personalizado1_2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Cuaderno del estudiante",
+        "price": 3500,
+        "img": "img/conteniedo_producto_personalizado1_3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Tarjetas personalizadas",
+        "price": 1500,
+        "img": "img/conteniedo_producto_personalizado1_4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Bolsas para eventos",
+        "price": 2000,
+        "img": "img/conteniedo_producto_personalizado2_1.jpg"
+    }
+]
